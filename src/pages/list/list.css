@@ -13,7 +13,18 @@
 .listSearch{
     flex:1;
     background-color: #febb02;
+    padding: 10px;
+    border-radius: 10px;
+    position: sticky;
+    top: 10px;
 }
+.IsTitle{
+    font-size: 20px;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+
 .listResult{
     flex:3
 
