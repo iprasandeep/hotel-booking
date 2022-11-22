@@ -12,7 +12,6 @@ const Header = ({type}) => {
 
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
-
   const [date, setDate ] = useState([
     {
       startDate: new Date(),
@@ -93,6 +92,7 @@ const Header = ({type}) => {
               moveRangeOnFistSelection={false}
               ranges = {date}
               className='date'
+              minDate={new Date()}
               /> } 
             </div>
             <div className="headerSearchItem">
