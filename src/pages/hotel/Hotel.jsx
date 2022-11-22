@@ -1,16 +1,21 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, {useState} from 'react'
-import './hotel.css';
-import Navbar from '../../components/navbar/Navbar';
-import Header from '../../components/header/Header';
-import MailList from '../../components/mailList/MailList';
-import Footer from '../../components/footer/Footer';
-import { faLocationDot, faCircleXmark,faCircleArrowLeft, faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
+import "./hotel.css";
+import Navbar from "../../components/navbar/Navbar";
+import Header from "../../components/header/Header";
+import MailList from "../../components/mailList/MailList";
+import Footer from "../../components/footer/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleArrowLeft,
+  faCircleArrowRight,
+  faCircleXmark,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const Hotel = () => {
-
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+
   const photos = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -32,27 +37,29 @@ const Hotel = () => {
     },
   ];
 
-const handleOpen = (i) =>{
-  setSlideNumber(i);
-  setOpen(true)
-}
-const handleMove = (direction) => {
-  let newSlideNumber;
+  const handleOpen = (i) => {
+    setSlideNumber(i);
+    setOpen(true);
+  };
 
-  if (direction === "l") {
-    newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
-  } else {
-    newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
-  }
+  const handleMove = (direction) => {
+    let newSlideNumber;
 
-  setSlideNumber(newSlideNumber)
-};
+    if (direction === "l") {
+      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+    } else {
+      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+    }
+
+    setSlideNumber(newSlideNumber)
+  };
+
   return (
-  <div>
-   <Navbar />
-   <Header type='list' />
-   <div className='hotelContainer'>
-   {open && (
+    <div>
+      <Navbar />
+      <Header type="list" />
+      <div className="hotelContainer">
+        {open && (
           <div className="slider">
             <FontAwesomeIcon
               icon={faCircleXmark}
@@ -74,59 +81,66 @@ const handleMove = (direction) => {
             />
           </div>
         )}
-     <div className='hotelWrapper'>
-       <button className="bookNow">Reserve or Book Now!</button>
-       <h1 className='hotelTitle'>Grand Hotel</h1>
-       <div className='hotelAddress'>
-         <FontAwesomeIcon icon={faLocationDot} />
-         <span>Elton St 125 New York</span>
-       </div>
-       <span className='hotelDistance'>
-         Excellenty location - 500m from center
-       </span>
-       <span className='hotelPriceHighlight'>
-         Book a stay over $114 at this property and get a free airport taxi
-       </span>
-      <div className='hotelImages' >
-          {photos.map((photo, i)=>(
-            <div className='hotelImgWrapper'>
-              <img onClick={handleOpen} src={photo.src} alt="" className="hotelImg" />
-            </div>
-          ))}
-      </div>
-
-      <div className="hotelDetails">
-        <div className="hotelDetailTexts">
-          <h1 className="hotelTitle">Stay in the heart of Krakow</h1>
-          <p className='hotelDesc'>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-          voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-          cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-          dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
-          soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, 
-          omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut 
-          rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. 
-          Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias 
-          consequatur aut perferendis doloribus asperiores repellat.
-          </p>
-        </div>
-        <div className='hotelDetailPrice'>
-          <h1> Perfect for a 9-night stay!</h1>
-          <span>
-            Location in the real heart of Krakow, this property has an excellent location scroe of 9.8!
+        <div className="hotelWrapper">
+          <button className="bookNow">Reserve or Book Now!</button>
+          <h1 className="hotelTitle">Tower Street Apartments</h1>
+          <div className="hotelAddress">
+            <FontAwesomeIcon icon={faLocationDot} />
+            <span>Elton St 125 New york</span>
+          </div>
+          <span className="hotelDistance">
+            Excellent location – 500m from center
           </span>
-            <h2>
-              <b>$945</b>(9 nights)
-            </h2>
-          <button>Reverse or Book Now!</button>
+          <span className="hotelPriceHighlight">
+            Book a stay over $114 at this property and get a free airport taxi
+          </span>
+          <div className="hotelImages">
+            {photos.map((photo, i) => (
+              <div className="hotelImgWrapper" key={i}>
+                <img
+                  onClick={() => handleOpen(i)}
+                  src={photo.src}
+                  alt=""
+                  className="hotelImg"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="hotelDetails">
+            <div className="hotelDetailsTexts">
+              <h1 className="hotelTitle">Stay in the heart of City</h1>
+              <p className="hotelDesc">
+                Located a 5-minute walk from St. Florian's Gate in Krakow, Tower
+                Street Apartments has accommodations with air conditioning and
+                free WiFi. The units come with hardwood floors and feature a
+                fully equipped kitchenette with a microwave, a flat-screen TV,
+                and a private bathroom with shower and a hairdryer. A fridge is
+                also offered, as well as an electric tea pot and a coffee
+                machine. Popular points of interest near the apartment include
+                Cloth Hall, Main Market Square and Town Hall Tower. The nearest
+                airport is John Paul II International Kraków–Balice, 16.1 km
+                from Tower Street Apartments, and the property offers a paid
+                airport shuttle service.
+              </p>
+            </div>
+            <div className="hotelDetailsPrice">
+              <h1>Perfect for a 9-night stay!</h1>
+              <span>
+                Located in the real heart of Krakow, this property has an
+                excellent location score of 9.8!
+              </span>
+              <h2>
+                <b>$945</b> (9 nights)
+              </h2>
+              <button>Reserve or Book Now!</button>
+            </div>
+          </div>
         </div>
+        <MailList />
+        <Footer />
       </div>
-     </div>
-     <MailList />
-     <Footer />
-   </div>
-  </div>
-  )
-}
+    </div>
+  );
+};
 
 export default Hotel;
